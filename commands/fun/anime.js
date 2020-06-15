@@ -37,7 +37,6 @@ module.exports = {
                         .addField("Ratings", body.data[0].attributes.averageRating)
                         .addField("TOTAL EPISODES", body.data[0].attributes.episodeCount)
                         .setImage(body.data[0].attributes.coverImage.large)
-                    //try it
 
 
                     message.channel.send(embed)
