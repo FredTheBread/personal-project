@@ -1,5 +1,5 @@
 const randomPuppy = require('random-puppy')
-
+const Discord = require('discord.js')
 module.exports = {
     name: "meme",
     category: "fun",
