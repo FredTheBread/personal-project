@@ -10,7 +10,8 @@ module.exports = {
     category: "info",
     description: "Get any pokemon description",
     run: async (client, message, args) => {
-        message.channel.send("Fetching Informtion for API").then(msg => {
+        let mesage = ("Fetching Information for API")
+        message.channel.send(mesage).then(msg => {
             get(options).then(body => {
                 let embed = new MessageEmbed()
                     .setAuthor(body.name, `https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/${body.images.typeIcon}`)
@@ -28,7 +29,8 @@ module.exports = {
             json: true
         }
         if(!args[0]) {
-            return message.channel.send('Please specify a pokemon!')
+            mesage.delete()
+            return message.channel.send('**Please specify a pokemon!**')
         }
     }
 }

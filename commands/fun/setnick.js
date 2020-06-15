@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
     name: "setnickname",
-    aliases: ["setnick", "nick"],
+    aliases: ["setnick", "nick", "nickname"],
     category: "info",
     description: "Changes the nickname of the person mentioned",
     run: async (client, message, args) => {
