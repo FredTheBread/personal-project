@@ -29,7 +29,7 @@ module.exports = {
             json: true
         }
         if(!args[0]) {
-            mesage.delete()
+            message.delete(mesage)
             return message.channel.send('**Please specify a pokemon!**')
         }
     }
