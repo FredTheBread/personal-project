@@ -30,6 +30,6 @@ module.exports = {
                 .setTimestamp()
                 .setFooter(bot.user.username.toUpperCase(), bot.user.displayAvatarURL)
             message.channel.send(cEmbed)
-        }).then(() => message.channel.stopTyping());
+        })
     }
 }
