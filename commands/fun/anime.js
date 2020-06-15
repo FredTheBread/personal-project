@@ -45,7 +45,7 @@ module.exports = {
 
                 } catch (err) {
                     msg.delete();
-                    return message.channel.send("Unable to find this anime");
+                    return message.channel.send("Unable to find that anime!");
                 }
             })
         })

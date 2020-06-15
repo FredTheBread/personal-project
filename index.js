@@ -54,6 +54,7 @@ client.on("ready", () => {
     */
 });
 
+
 client.on("message", async message => {
     const prefix = "$";
     let blacklist = await db.fetch(`blacklist_${message.author.id}`);

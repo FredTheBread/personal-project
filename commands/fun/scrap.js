@@ -9,7 +9,7 @@ module.exports = {
     usage: "scrap <anime_name> | <episode_no>",
     run: async (client, message, args) => {
 
-        const cmd = args.join(" ").split(' | ')
+        const cmd = args.join(" ").split(' Episode ')
 
 
         if (!cmd[0]) {
