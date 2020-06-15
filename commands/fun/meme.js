@@ -23,14 +23,13 @@ module.exports = {
         ]
         let subreddit = reddit[Math.floor(Math.random() * reddit.length)];
     
-        message.channel.startTyping();
         randomPuppy(subreddit).then(async body => {
             let cEmbed = new Discord.MessageEmbed()
                 .setColor("RANDOM")
-                .setAuthor(`${bot.user.username} Meme!`, message.guild.iconURL)
+                .setAuthor(`${client.user.username} Meme!`, message.guild.iconURL)
                 .setImage(body)
                 .setTimestamp()
-                .setFooter(bot.user.username.toUpperCase(), bot.user.displayAvatarURL)
+                .setFooter(client.user.username.toUpperCase(), client.user.displayAvatarURL)
             message.channel.send(cEmbed)
         })
     }
