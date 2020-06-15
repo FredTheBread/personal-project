@@ -27,5 +27,8 @@ module.exports = {
             url: `https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/pokedex.php?pokemon=${args.join(" ")}`,
             json: true
         }
+        if(!args[0]) {
+            return message.channel.send('Please specify a pokemon!')
+        }
     }
 }

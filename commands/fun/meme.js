@@ -1,3 +1,5 @@
+const randomPuppy = require('random-puppy')
+
 module.exports = {
     name: "meme",
     category: "fun",
