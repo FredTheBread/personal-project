@@ -3,6 +3,7 @@ const superagent = require('superagent');
 
 module.exports = {
     name: "meow",
+    aliases: ["cat"],
     category: "info",
     description: "look at these cats!",
     run: async (client, message, args) => {

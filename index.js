@@ -32,11 +32,12 @@ config({
 
 client.on("ready", () => {
     console.log(`${client.user.username} is now online!`);
-    client.user.setActivity(db.get(`status`))
     /*
+    client.user.setActivity(db.get(`status`))
+    */
     function randomStatus() {
 
-        let status = ["Discord Bot", "YouTube", "Discord", "Minecraft", "Node.js", "Your Mom", "Fortnite", "Epic Games", "Pornhub", "Twitch", "Github", "Coding", "Warzone", "Valorant", "Hacking into the FBI", "Don't spam please", "https://discord.gg/2pzzqnP join please"] // You can change it whatever you want.
+        let status = ["Discord Bot", "YouTube", "Discord", "Minecraft", "Node.js", "Your Mom", "Fortnite", "Epic Games", "Twitch", "Github", "Coding", "Warzone", "Valorant", "Hacking into the FBI", "Don't spam please", "https://discord.gg/2pzzqnP join please"] // You can change it whatever you want.
         let rstatus = Math.floor(Math.random() * status.length);
 
         // client.user.setActivity(status[rstatus], {type: "WATCHING"}); 
@@ -51,7 +52,6 @@ client.on("ready", () => {
         }, )
     };
     setInterval(randomStatus, 30000)
-    */
 });
 
 
