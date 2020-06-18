@@ -20,7 +20,7 @@ module.exports = {
     description: "Collects your daily reward",
     run: async (client, message, args) => {
         let timeout = 86400000;
-        let reward = 100;
+        let reward = 500;
     
         let embed = new Discord.MessageEmbed();
         embed.setTitle("Daily Reward");
