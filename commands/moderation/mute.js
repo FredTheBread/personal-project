@@ -10,7 +10,7 @@ module.exports = {
     run: async (client, message, args) => {
         if (!message.member.hasPermission("MANAGE_ROLES")) {
             return message.channel.send(
-                "Sorry but you do not have permission to unmute anyone"
+                "Sorry but you do not have permission to mute anyone"
             );
         }
 
@@ -43,7 +43,7 @@ module.exports = {
         setTimeout(function () {
 
             person.roles.remove(role.id);
-            message.channel.send(`${person.user.tag} has been unmuted.`)
+            message.channel.send(`${person.user.tag} has been muted.`)
         }, ms(time));
     }
 }
