@@ -24,7 +24,6 @@ module.exports = {
             .setColor('#000000')
             .setDescription(`${message.author} kissed ${user}`)
             .setImage(rand)
-            .setThumbnail(avatar)
         await message.channel.send(embed);
     }
 }
