@@ -38,12 +38,12 @@ module.exports = {
             } else if(res.length <= start) {
                 embed.addField("Error", "Page not found!");
             } else if(res.length <= end) {
-                embed.setFooter(`page ${pg} of ${pg}`);
+                embed.setFooter(`Page ${pg} of ${pg}`);
                 for(i = start; i < res.length; i++) {
                     embed.addField(`${i + 1}. ${res[i].name}`, `$${res[i].money.toLocaleString()}`);
                 }
             }else {
-                embed.setFooter(`page ${pg} of ${pg}`);
+                embed.setFooter(`Page ${pg} of ${pg}`);
                 for(i = start; i < end; i++){
                     embed.addField(`${i + 1}. ${res[i].name}`, `$${res[i].money.toLocaleString()}`);
                 }
