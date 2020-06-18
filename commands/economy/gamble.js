@@ -59,11 +59,17 @@ module.exports = {
                 if (pick == "lose") {
                     data.money -= bet;
                     data.save().catch(err => console.log(err));
-                    return message.reply(`you lose. ❌ New Balance: $${data.money}`);
+                    let embed = new Discord.MessageEmbed()
+                    .setTitle('You lose!')
+                    .setAuthor(`Your Balance has changed to $${data.money}`)
+                    return message.channel.send(embed);
                 } else {
                     data.money += bet;
                     data.save().catch(err => console.log(err));
-                    return message.reply(`you win! ✅ New Balance: $${data.money}`);
+                    let embed2 = new Discord.MessageEmbed()
+                    .setTitle('You Win!')
+                    .setAuthor(`Your Balance has changed to $${data.money}`)
+                    return message.channel.send(embed2);
                 }
             }
         })
