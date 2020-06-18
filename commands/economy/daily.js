@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("parse-ms");
 const mongoose = require("mongoose");
-const botconfig = require("../botconfig.json");
+const botconfig = require("../../config.json");
 
 
 // CONNECT TO DATABASE
