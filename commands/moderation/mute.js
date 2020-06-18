@@ -9,9 +9,7 @@ module.exports = {
     description: "Mutes someone",
     run: async (client, message, args) => {
         if (!message.member.hasPermission("MANAGE_ROLES")) {
-            return message.channel.send(
-                "Sorry but you do not have permission to mute anyone"
-            );
+            return message.channel.send("You do not have permission to mute anyone");
         }
 
         if (!message.guild.me.hasPermission("MANAGE_ROLES")) {

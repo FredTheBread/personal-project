@@ -8,9 +8,7 @@ module.exports = {
     description: "Unmutes someone",
     run: async (client, message, args) => {
         if (!message.member.hasPermission("MANAGE_ROLES")) {
-            return message.channel.send(
-                "Sorry but you do not have permission to unmute anyone"
-            );
+            return message.channel.send("You do not have permission to unmute anyone!");
         }
 
         if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
