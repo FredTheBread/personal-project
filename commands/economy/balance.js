@@ -22,7 +22,7 @@ module.exports = {
         if (!args[0]) {
             var user = message.author;
         } else {
-            var user = message.mentions.users.first() || bot.users.cache.get(args[0]);
+            var user = message.mentions.users.first() || client.users.cache.get(args[0]);
         }
 
         Data.findOne({
@@ -31,7 +31,7 @@ module.exports = {
             if (err) console.log(err);
             if (!data) {
                 const newData = new Data({
-                    name: bot.users.cache.get(user.id).username,
+                    name: client.users.cache.get(user.id).username,
                     userID: user.id,
                     lb: "all",
                     money: 0,

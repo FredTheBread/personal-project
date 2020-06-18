@@ -17,7 +17,7 @@ module.exports = {
     category: "economy",
     description: "Pay someone some money",
     run: async (client, message, args) => {
-        let user = message.mentions.users.first() || bot.users.cache.get(args[0]);
+        let user = message.mentions.users.first() || client.users.cache.get(args[0]);
         if (!user) return message.reply("Sorry, I can't find that user bruh.");
         if (user.id === message.author.id) return message.reply("you cannot pay yourself!");
         if(args[1] != Math.floor(args[1])) return message.reply("please enter only whole numbers!");
@@ -41,7 +41,7 @@ module.exports = {
     
                     if(!userData) {
                         const newData = new Data({
-                            name: bot.users.cache.get(user.id).username,
+                            name: client.users.cache.get(user.id).username,
                             userID: user.id,
                             lb: "all",
                             money: parseInt(args[1]),
