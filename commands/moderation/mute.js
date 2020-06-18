@@ -8,7 +8,19 @@ module.exports = {
     category: "moderation",
     description: "Mutes someone",
     run: async (client, message, args) => {
+        if (!message.member.hasPermission("MANAGE_ROLES")) {
+            return message.channel.send(
+                "Sorry but you do not have permission to unmute anyone"
+            );
+        }
 
+        if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
+            return message.channel.send("I do not have permission to manage roles.");
+        }
+
+        if (!message.member.hasPermission("ADMINISTRATOR")) {
+            return message.channel.send(`**${message.author.username}**, You do not have enough permission to use this command`)
+        }
         var person = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
         if (!person) return message.reply("I couldn't find that person " + person)
 

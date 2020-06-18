@@ -16,6 +16,10 @@ module.exports = {
         if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
             return message.channel.send("I do not have permission to manage roles.");
         }
+
+        if (!message.member.hasPermission("ADMINISTRATOR")) {
+            return message.channel.send(`**${message.author.username}**, You do not have enough permission to use this command`)
+        }
         const user = message.mentions.members.first();
 
         if (!user) {

@@ -1,4 +1,4 @@
 {
     "owners": ["673485740679757835"],
-    "mongoPass": "mongodb+srv://FredTheBread:<MichaelCole2005>@themanagement-oxx2m.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    "mongoPass": "mongodb+srv://FredTheBread:MichaelCole2005@themanagement-oxx2m.mongodb.net/<dbname>?retryWrites=true&w=majority"
 }
