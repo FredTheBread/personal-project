@@ -60,15 +60,15 @@ module.exports = {
                     data.money -= bet;
                     data.save().catch(err => console.log(err));
                     let embed = new Discord.MessageEmbed()
-                    .setTitle('You lose!')
-                    .setAuthor(`Your Balance has changed to $${data.money}`)
+                    .setAuthor('You lose!')
+                    .setTitle(`Your Balance has changed to $${data.money}`)
                     return message.channel.send(embed);
                 } else {
                     data.money += bet;
                     data.save().catch(err => console.log(err));
                     let embed2 = new Discord.MessageEmbed()
-                    .setTitle('You Win!')
-                    .setAuthor(`Your Balance has changed to $${data.money}`)
+                    .setAuthor('You Win!')
+                    .setTitle(`Your Balance has changed to $${data.money}`)
                     return message.channel.send(embed2);
                 }
             }
