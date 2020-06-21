@@ -15,7 +15,7 @@ class Util {
 
 
     static getLevelxp(level) {
-        return 5 * Math.pow(level, 2) + 50 * level + 100;
+        return 5 * Math.pow(level, 2) + 70 * level + 100;
     }
 
     static getInfo(exp) {
@@ -30,7 +30,7 @@ class Util {
     }
 
     static async addexp(message) {
-        let toadd = Math.floor(Math.random() * 3 + 3);
+        let toadd = Math.floor(Math.random() * 4 + 4);
         let oldxp = db.get(`xp_${message.author.id}_${message.guild.id}`)
         let oldlvl = Util.getLevel(oldxp)
         let newxp = oldxp + toadd;

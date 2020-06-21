@@ -26,9 +26,8 @@ module.exports = {
         randomPuppy(subreddit).then(async body => {
             let cEmbed = new Discord.MessageEmbed()
                 .setColor("RANDOM")
-                .setAuthor(`${client.user.username} Meme!`, message.guild.iconURL)
+                .setAuthor(`A new fresh Meme from Reddit appeared!`, message.guild.iconURL)
                 .setImage(body)
-                .setFooter(client.user.username.toUpperCase(), client.user.displayAvatarURL)
             message.channel.send(cEmbed)
         })
     }

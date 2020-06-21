@@ -17,9 +17,16 @@ const {
 // Collections
 client.commands = new Collection();
 client.aliases = new Collection();
-client.snipes = new discord.Collection();
+client.snipes = new Map();
 client.config = require("./config.json");
 
+client.on('messageDelete', function (message, channel) {
+    client.snipes.set(message.channel.id, {
+        content: message.content,
+        author: message.author.tag,
+        image: message.attachments.first() ? message.attachments.first().proxyURL : null
+    })
+})
 
 config({
     path: __dirname + "/.env"
