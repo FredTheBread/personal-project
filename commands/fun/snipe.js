@@ -9,6 +9,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setAuthor(msg.author + "'s message has been sniped!")
             .setDescription(msg.content)
+            .setTimestamp()
         if (msg.image) embed.setImage(msg.image)
         message.channel.send(embed)
     }
