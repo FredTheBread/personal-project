@@ -5,7 +5,7 @@ module.exports = {
         const user = message.author.id;
         const name = "ticket-" + user;
         if (message.guild.channels.cache.find(ch => ch.name == name)) {
-            message.channel.send("You have already opened a ticket")
+            message.channel.send("You already have an opened ticket!")
         } else {
             message.guild.channels.create(name).then((chan) => {
                 chan.updateOverwrite(message.guild.roles.everyone, {
@@ -17,7 +17,7 @@ module.exports = {
                     VIEW_CHANNEL: true
                 })
                 message.channel.send("I have created a ticket for you");
-                chan.send("Support will be here shortly").then((m) => {
+                chan.send("Please sit tight, support will arrive as soon as possible!").then((m) => {
                     m.pin()
                 })
             })

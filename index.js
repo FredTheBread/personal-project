@@ -70,6 +70,7 @@ client.on("message", async message => {
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
 
+
     // If message.member is uncached, cache it.
     if (!message.member) message.member = await message.guild.fetchMember(message);
 
@@ -89,5 +90,10 @@ client.on("message", async message => {
     return addexp(message)
 });
 
+client.on("message", message => {
+    if (message.mentions.members.has("709328387214147667")) {
+        return message.channel.send("My prefix is **$**")
+    };
+})
 
 client.login(process.env.TOKEN);
