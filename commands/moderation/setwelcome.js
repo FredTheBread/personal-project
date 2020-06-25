@@ -7,17 +7,20 @@ module.exports = {
   usage: "setwelcome <#channel>",
   description: "Set the welcome channel",
   run: (client, message, args) => {
-    
+
     let channel = message.mentions.channels.first()
-    
-    if(!channel) {
-      return message.channel.send("Please Mention the channel first")
+
+
+    if (args[0] === 'clear') {
+      db.set(`welchannel_${message.guild.id}`, null)
+      message.channel.send("Done!")
+    } else {
+      if (!channel) {
+        return message.channel.send("Please Mention the channel first")
+      }
+      db.set(`welchannel_${message.guild.id}`, channel.id)
+      message.channel.send(`Welcome Channel is set to ${channel}`)
     }
     
-    //Now we gonna use quick.db
-    
-    db.set(`welchannel_${message.guild.id}`, channel.id)
-    
-    message.channel.send(`Welcome Channel is set to ${channel}`)
   }
 }
