@@ -7,7 +7,7 @@ module.exports = {
     run: async (client, message, args) => {
         const user = message.author;
         let embed = new Discord.MessageEmbed()
-        .setAuthor(`Currently \nListening to ${client.guilds.cache.size} servers \nWatching ${client.users.cache.size} Users`)
+        .setAuthor(`Listening to ${client.guilds.cache.size} servers \nWatching ${client.users.cache.size} Users`)
         .setThumbnail(message.author.displayAvatarURL())
         message.channel.send(embed)
     }
