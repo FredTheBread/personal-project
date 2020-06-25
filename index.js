@@ -93,7 +93,26 @@ client.on("message", async message => {
 client.on("message", message => {
     if (message.mentions.members.has("709328387214147667")) {
         return message.channel.send("My prefix is **$**")
-    };
+    }
+});
+
+const db = require("quick.db") //using quick.db package
+
+client.on("guildMemberAdd", (member) => { //usage of welcome event
+  let chx = db.get(`welchannel_${member.guild.id}`); //defining var
+  
+  if(chx === null) { //check if var have value or not
+    return;
+  }
+
+  let wembed = new discord.MessageEmbed() //define embed
+  .setAuthor(member.user.username, member.user.avatarURL())
+  .setColor("#ff2050")
+  .setThumbnail(member.user.avatarURL())
+  .setDescription(`We are very happy to have you in our server`);
+  
+  client.channels.cache.get(chx).send(wembed) //get channel and send embed
 })
+
 
 client.login(process.env.TOKEN);
