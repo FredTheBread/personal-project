@@ -13,6 +13,7 @@
     "anime-scraper": "^3.1.1",
     "ascii": "^1.0.0",
     "ascii-table": "0.0.9",
+    "calculator": "^0.1.12",
     "common-tags": "^1.8.0",
     "custom-discord-jokes": "^1.0.3",
     "discord.js": "^12.2.0",
