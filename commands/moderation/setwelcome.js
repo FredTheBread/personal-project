@@ -11,7 +11,7 @@ module.exports = {
     let channel = message.mentions.channels.first()
 
 
-    if (args[0] === 'clear', 'reset') {
+    if (args[0] === 'reset') {
       db.set(`welchannel_${message.guild.id}`, null)
       message.channel.send("Welcome channel has been reset. No welcome messages will be sent!")
     } else {
