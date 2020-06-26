@@ -2,6 +2,7 @@ let Discord = require('discord.js');
 
 module.exports = {
     name: "info",
+    aliases: ["stats"],
     category: "fun",
     description: "Returns the number of servers and members the bot is watching",
     run: async (client, message, args) => {
