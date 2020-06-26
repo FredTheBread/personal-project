@@ -16,8 +16,8 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setColor(0xffffff)
         .setTitle('Math calculation')
-        .addField('Input', `\`\`\`${args.join('')}\`\`\``)
-        .addField('Output', `\`\`\`js${resp}\`\`\``)
+        .addField('Input', `\`\`\`js\n${args.join('')}\`\`\``)
+        .addField('Output', `\`\`\`js\n${resp}\`\`\``)
         message.channel.send(embed)
     }
 }
