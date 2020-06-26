@@ -10,7 +10,7 @@ module.exports = {
 
     let channel = message.mentions.channels.first()
 
-    if (args[0] === 'clear', 'reset') {
+    if (args[0] === 'reset') {
       db.set(`leavechannel_${message.guild.id}`, null)
       message.channel.send("Leave channel has been reset. No goodbye messages will be sent!")
     } else {
