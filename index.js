@@ -96,8 +96,6 @@ client.on("message", message => {
     }
 });
 
-const db = require("quick.db") //using quick.db package
-
 client.on("guildMemberAdd", (member) => { //usage of welcome event
   let chx = db.get(`welchannel_${member.guild.id}`); //defining var
   
