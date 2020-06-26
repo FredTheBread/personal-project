@@ -18,6 +18,7 @@
     "custom-discord-jokes": "^1.0.3",
     "discord.js": "^12.2.0",
     "discord.js-commando": "^0.10.0",
+    "discord.js-pagination": "^1.0.2",
     "dotenv": "^8.2.0",
     "fortnite": "^4.3.2",
     "fs": "0.0.1-security",
