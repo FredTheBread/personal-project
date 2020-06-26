@@ -12,7 +12,7 @@ module.exports = {
     if (User == null) {
       return message.channel.send(`You did not mention a user!`);
     } else {
-      let Reason = message.content.slice(23 + 7) || null;
+      let Reason = message.content.slice(22 + 7) || null;
       if (Reason == null) {
         return message.channel.send(
           `You did not specify a reason for the report!`

@@ -1,14 +1,22 @@
-const calculator = require('../../functions')
+const math = require('mathjs')
+const Discord = require('discord.js')
 
 module.exports = {
     name: "math",
     category: "fun",
     description: "Returns latency and API ping",
     run: async (client, message, args) => {
-        if (!args[0]) return message.channel.send('You did not specify the first number!')
-        if (!args[1]) return message.channel.send('You did not specify the calculation!')
-        if (!args[2]) return message.channel.send('You did not specify the second number!')
-        message.channel.send(calculator(args[0], args[1], args[2]))
-
+        if(!args[0]) return message.reply('Please input a calcualation.');
+        let resp;
+        try {
+            resp = math.eval(args.join(' '));
+        } catch (e) {
+            return message.reply('Sorry, but please input a valid calculation')
+        }
+        const embed = new Discord.MessageEmbed()
+        .setColor(0xffffff)
+        .setTitle('Math calculation')
+        .addField('Input', args.join(' '))
+        .addField('Output', `\`\`\`js${resp}\`\`\``)
     }
 }

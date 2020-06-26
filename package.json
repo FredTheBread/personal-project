@@ -22,8 +22,10 @@
     "fortnite": "^4.3.2",
     "fs": "0.0.1-security",
     "imdb-api": "^4.0.3",
+    "mathjs": "^7.0.2",
     "mongoose": "^5.9.19",
     "ms": "^2.1.2",
+    "mysql2": "^2.1.0",
     "node-superfetch": "^0.1.10",
     "parse-ms": "^2.1.0",
     "parseint": "^1.0.1",
@@ -32,6 +34,7 @@
     "random-puppy": "^1.1.0",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.8",
+    "sequelize": "^6.2.0",
     "superagent": "^5.2.2",
     "weather": "^1.0.4",
     "weather-js": "^2.0.0"
