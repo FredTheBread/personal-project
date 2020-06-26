@@ -97,20 +97,36 @@ client.on("message", message => {
 });
 
 client.on("guildMemberAdd", (member) => { //usage of welcome event
-  let chx = db.get(`welchannel_${member.guild.id}`); //defining var
-  
-  if(chx === null) { //check if var have value or not
-    return;
-  }
+    let chx = db.get(`welchannel_${member.guild.id}`); //defining var
 
-  let wembed = new discord.MessageEmbed() //define embed
-  .setAuthor(member.user.username, member.user.avatarURL())
-  .setColor("#ff2050")
-  .setThumbnail(member.user.avatarURL())
-  .setDescription(`We are very happy to have you in our server`);
-  
-  client.channels.cache.get(chx).send(wembed) //get channel and send embed
+    if (chx === null) { //check if var have value or not
+        return;
+    }
+
+    let wembed = new discord.MessageEmbed() //define embed
+        .setAuthor(member.user.username, member.user.avatarURL())
+        .addField("Member Count:", member.guild.memberCount)
+        .setColor("#0032FF")
+        .setThumbnail(member.user.avatarURL())
+        .setDescription(`We are very happy to have you in our server`);
+
+    client.channels.cache.get(chx).send(wembed) //get channel and send embed
 })
 
+client.on("guildMemberRemove", (member) => {
+    let chx = db.get(`leavechannel_${member.guild.id}`);
+
+    if (chx === null) {
+        return;
+    }
+
+    let oembed = new discord.MessageEmbed()
+        .setAuthor(member.user.username, member.user.avatarURL())
+        .addField("Member Count:", member.guild.memberCount)
+        .setColor("#FF2D00")
+        .setThumbnail(member.user.avatarURL())
+        .setDescription(`We are very sad to say that ${member.user} has left the server`);
+    client.channels.cache.get(chx).send(oembed)
+})
 
 client.login(process.env.TOKEN);
