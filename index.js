@@ -19,6 +19,7 @@ client.commands = new Collection();
 client.aliases = new Collection();
 client.snipes = new Map();
 client.config = require("./config.json");
+client.config = config;
 
 client.on('messageDelete', function (message, channel) {
     client.snipes.set(message.channel.id, {
@@ -59,6 +60,19 @@ client.on("ready", () => {
         }, )
     };
     setInterval(randomStatus, 30000)
+});
+
+const { GiveawaysManager } = require('discord-giveaways');
+
+client.giveawaysManager = new GiveawaysManager(client, {
+    storage: "./giveaways.json",
+    updateCountdownEvery: 5000,
+    default: {
+        botsCanWin: false,
+        exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
+        embedColor: "#FF0000",
+        reaction: "🎉"
+    }
 });
 
 
