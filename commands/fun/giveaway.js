@@ -1,39 +1,55 @@
-const {
-    MessageEmbed
-} = require('discord.js')
 const ms = require('ms');
 
 module.exports = {
-    name: 'giveaway',
-    aliases: ["gaw"],
-    description: "Create a giveaway",
-    usage: '<time> <channel> <prize>',
-    category: "info",
-    run: async (bot, message, args) => {
-        if (!args[0]) return message.channel.send(`Please specify how long you want the giveaway to be!`)
-        if (!args[0].endsWith("d") && !args[0].endsWith("h") && !args[0].endsWith("w")) return message.channel.send("You didn't use the correct formatting! (d, h, w)")
-        if (isNaN(args[0][0])) return message.channel.send("Please only use whole numbers!")
-        let channel = message.mentions.channels.first()
-        if (!channel) return message.channel.send("Please specify what channel you want the giveaway to be in!")
-        let prize = args.slice(2).join(" ")
-        if (!prize) return message.channel.send(`You didn't specify a prize!`)
-        message.channel.send(`**Giveaway created in ${channel}!**`)
+    name: "giveaway",
+    description: "Starts a giveaway",
 
-        let Embed = new MessageEmbed()
-            .setTitle(`New giveaway`)
-            .setDescription(`${message.author} is hosting a giveaway with the prize of **${prize}**`)
-            .setTimestamp(Date.now() + ms(args[0]))
-            .setColor(`#0000FF`)
+    async run(client, message, args) {
+        if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send('You are not allowed to start giveaways');
 
-        let m = await channel.send(Embed)
+        let channel = message.mentions.channels.first();
 
-        m.react("🎉")
-        setTimeout(() => {
-            if (m.reactions.cache.size == 0) return message.channel.send('Nobody reacted! Gievaway is cancelled :(')
-            let winner = m.reactions.cache.get("🎉").users.cache.filter(u => !u.bot).random()
-            channel.send(`The winner of the giveaway for **${prize}** is @${winner}! 🥳🥳🥳`)
+        if (!channel) return message.channel.send('Please provide a channel');
 
-        }, ms(args[0]));
+        let giveawayDuration = args[1];
+
+        if (!giveawayDuration || isNaN(ms(giveawayDuration))) return message.channel.send('Pleae provide a valid duration');
+
+        let giveawayWinners = args[2];
+
+        if (isNaN(giveawayWinners) || (parseInt(giveawayWinners) <= 0)) return message.channel.send('Please provide a valid number of winners!');
+
+        let giveawayPrize = args.slice(3).join(" ");
+
+        if (!giveawayPrize) return message.channel.send('Ok then, I\'ll give away nothing');
+
+        client.giveawaysManager.start(channel, {
+            time: ms(giveawayDuration),
+            prize: giveawayPrize,
+            winnerCount: giveawayWinners,
+            hostedBy: client.config.hostedBy ? message.author : null,
+
+            messages: {
+                giveaway: (client.config.everyoneMention ? "@everyone\n\n" : "") + "GIVEAWAY",
+                giveawayEned: (client.config.everyoneMention ? "@everyone\n\n" : "") + "GIVEAWAY ENDED",
+                timeRemaining: "Time remaining: **{duration}**",
+                inviteToParticipate: "React with 🎉 to enter",
+                winMessage: "Congrats {winners}, you won **{prize}**",
+                embedFooter: "Giveaway time!",
+                noWinner: "Couldn't determine a winner",
+                hostedBy: "Hosted by {user}",
+                winners: "winner(s)",
+                endedAt: "Ends at",
+                units: {
+                    seconds: "seconds",
+                    minutes: "minutes",
+                    hours: "hours",
+                    days: "days",
+                    pluralS: false
+                }
+            }
+        })
+
+        message.channel.send(`Giveaway starting in ${channel}`);
     }
-
 }
