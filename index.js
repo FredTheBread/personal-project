@@ -110,6 +110,14 @@ client.on("message", message => {
     }
 });
 
+
+let stats = {
+    serverID: '689568955345797204',
+    total: "726685404341862451",
+    member: "726685448075739227",
+    bots: "726685534243651634"
+}
+
 client.on("guildMemberAdd", (member) => { //usage of welcome event
     let chx = db.get(`welchannel_${member.guild.id}`); //defining var
 
@@ -125,7 +133,7 @@ client.on("guildMemberAdd", (member) => { //usage of welcome event
         .setDescription(`We are very happy to have you in our server`);
 
     client.channels.cache.get(chx).send(wembed) //get channel and send embed
-})
+});
 
 client.on("guildMemberRemove", (member) => {
     let chx = db.get(`leavechannel_${member.guild.id}`);
@@ -141,6 +149,21 @@ client.on("guildMemberRemove", (member) => {
         .setThumbnail(member.user.avatarURL())
         .setDescription(`We are very sad to say that ${member.user} has left the server`);
     client.channels.cache.get(chx).send(oembed)
+});
+
+
+client.on('guildMemberAdd', member => {
+    if(member.guild.id !== stats.serverID) return;
+    client.channels.cache.get(stats.total).setName(`Total Users: ${member.guild.memberCount}`);
+    client.channels.cache.get(stats.member).setName(`Members: ${member.guild.members.cache.filter(m => !m.user.bot).size}`);
+    client.channels.cache.get(stats.bots).setName(`Bots: ${member.guild.members.cache.filter(m => m.user.bot).size}`);
 })
 
+client.on('guildMemberRemove', member => {
+    if(member.guild.id !== stats.serverID) return;
+    client.channels.cache.get(stats.total).setName(`Total Users: ${member.guild.memberCount}`);
+    client.channels.cache.get(stats.member).setName(`Members: ${member.guild.members.cache.filter(m => !m.user.bot).size}`);
+    client.channels.cache.get(stats.bots).setName(`Bots: ${member.guild.members.cache.filter(m => m.user.bot).size}`);
+    
+})
 client.login(process.env.TOKEN);
