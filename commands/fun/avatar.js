@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
   name: "avatar",
-  category: "Info",
+  category: "info",
   aliases: ["av"],
   description: "Get your or someone photo profile.",
   usage: "avatar [user/id]",

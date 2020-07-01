@@ -26,6 +26,8 @@
     "fs": "0.0.1-security",
     "imdb-api": "^4.0.3",
     "mathjs": "^7.0.2",
+    "moment": "^2.27.0",
+    "moment-duration-format": "^2.3.2",
     "mongoose": "^5.9.19",
     "ms": "^2.1.2",
     "mysql2": "^2.1.0",
