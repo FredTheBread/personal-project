@@ -1,5 +1,3 @@
-let lockit = require('l')
-
 module.exports = {
     name: "lockdown",
     category: "moderation",
