@@ -1,4 +1,5 @@
 const ms = require("ms");
+
 module.exports = {
     name: "slowmode",
     category: "moderation",
