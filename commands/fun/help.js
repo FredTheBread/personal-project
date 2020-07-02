@@ -18,8 +18,8 @@ module.exports = {
             embed.addField("❯ Owner", "`eval`, `blacklist`, `unblacklist`, `status`")
             embed.addField("❯ Mod", "`ban`,`clear`,`kick`, `leave`, `mute`, `warn`, `warnings`, `reset warns`, `set welcome`, `set leave`, `unmute`")
             embed.addField("❯ Fun", "`anime`, `corona`, `hug`, `imdb`, `instagram`, `kiss`, `rank`, `meow`, `pat`, `ping`, `poke`, `pokemon`, `scrap`, `send`, `nickname`, `snipe`, `spotify`, `weather`, `help`")
-            embed.addField("❯ Help", "`suggest`, `help`, `giveaway`")
-            embed.setFooter('Made by FredTheBread\nUsage: $giveaway <time> <channel> <prize>', `${message.client.user.avatarURL()}`);
+            embed.addField("Giveaway", "`giveaway`, `reroll`")
+            embed.setFooter('Made by FredTheBread\nUsage: $giveaway <channel> <winners> <time> <prize>', `${message.client.user.avatarURL()}`);
             embed.setColor("#00ff00")
 
             message.channel.send(embed);
