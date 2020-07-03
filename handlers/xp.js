@@ -30,7 +30,7 @@ class Util {
     }
 
     static async addexp(message) {
-        let toadd = Math.floor(Math.random() * 4 + 4);
+        let toadd = Math.floor(Math.random() * 8 + 6);
         let oldxp = db.get(`xp_${message.author.id}_${message.guild.id}`)
         let oldlvl = Util.getLevel(oldxp)
         let newxp = oldxp + toadd;
