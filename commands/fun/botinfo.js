@@ -10,7 +10,7 @@ module.exports = {
         let botembed = new Discord.MessageEmbed()
         .setDescription("Bot Information")
         .setColor("0ED4DA")
-        .setThumbnail(boticon)
+        .setThumbnail('https://cdn.discordapp.com/avatars/709328387214147667/495842741d5bd6870494d6943bde9fb7.jpg?size=4096')
         .addField("Bot Name", client.user.username, true)
         .addField("Bot Creation Date", client.user.createdAt, true)
         .addField("Servers", client.guilds.cache.size, true)

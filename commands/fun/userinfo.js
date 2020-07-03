@@ -24,10 +24,10 @@ module.exports = {
             .setThumbnail(userinfo.avatar)
             .addField(`Username`, userinfo.name, true)
             .addField(`Discriminator`, userinfo.discrim, true)
-            .addField(`ID`, userinfo.id)
+            .addField(`ID`, userinfo.id, true)
             .addField(`Status`, userinfo.status, true)
             .addField(`Registered`, userinfo.registered, true)
-            .addField(`Joined`, userinfo.joined)
+            .addField(`Joined`, userinfo.joined, true)
         message.channel.send(embed)
     }
 }
