@@ -1,6 +1,6 @@
 module.exports = {
     name: "createchannel",
-    aliases: ["channel", "create"],
+    aliases: ["create"],
     category: "moderation",
     description: "Creates a channel",
     run: async (client, message, args) => {
