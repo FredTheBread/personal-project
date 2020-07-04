@@ -1,34 +1,19 @@
-const randomPuppy = require('random-puppy')
-const Discord = require('discord.js')
+const { MessageEmbed } = require("discord.js");
+const api = require("imageapi.js");
 module.exports = {
-    name: "meme",
-    category: "fun",
-    description: "Gives you a funny meme",
-    run: async (client, message, args) => {
-        let reddit = [
-            "meme",
-            "animemes",
-            "MemesOfAnime",
-            "animememes",
-            "AnimeFunny",
-            "dankmemes",
-            "dankmeme",
-            "wholesomememes",
-            "MemeEconomy",
-            "techsupportanimals",
-            "meirl",
-            "me_irl",
-            "2meirl4meirl",
-            "AdviceAnimals"
-        ]
-        let subreddit = reddit[Math.floor(Math.random() * reddit.length)];
-    
-        randomPuppy(subreddit).then(async body => {
-            let cEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setAuthor(`Fresh Meme`, message.guild.iconURL)
-                .setImage(body)
-            message.channel.send(cEmbed)
-        })
-    }
-}
+  name: "meme",
+  description: "Get a meme!",
+  category: "info",
+  run: async (bot, message, args) => {
+    let subreddits = ["comedyheaven", "dank", "meme", "memes"];
+    let subreddit =
+      subreddits[Math.floor(Math.random() * subreddits.length)];
+    let img = await api(subreddit, true);
+    const Embed = new MessageEmbed()
+      .setTitle(`A meme from r/${subreddit}`)
+      .setURL(`https://reddit.com/r/${subreddit}`)
+      .setColor("RANDOM")
+      .setImage(img);
+    message.channel.send(Embed);
+  },
+};
