@@ -9,7 +9,7 @@ module.exports = {
     name: "anime",
     category: "info",
     description: "Get anime information",
-    aliases: ["kitsu"],
+    aliases: [],
     usage: "anime <anime_name>",
     run: (client, message, args) => {
         let option = {

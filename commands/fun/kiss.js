@@ -15,7 +15,7 @@ module.exports = {
         var rand = list[Math.floor(Math.random() * list.length)];
         let user = message.mentions.users.first() || client.users.cache.get(args[0]);
         if (!user) { 
-            return message.reply('remember to mention a valid user to kiss!');
+            return message.reply(', remember to mention a valid user to kiss!');
         }
         let avatar = message.author.displayAvatarURL({
             format: "png"

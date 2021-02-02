@@ -21,7 +21,6 @@ module.exports = {
             message.channel.send({
                 embed: ghembed
             })
-            message.channel.send(':)')
             return;
         }
         if (!message.mentions.members.first().user.username === message.mentions.has(message.author)) {

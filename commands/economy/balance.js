@@ -17,7 +17,7 @@ module.exports = {
     name: "balance",
     category: "economy",
     aliases: ["bal", "money"],
-    description: "gives you how much money you have",
+    description: "Tells you how much money you have",
     run: async (client, message, args) => {
         if (!args[0]) {
             var user = message.author;

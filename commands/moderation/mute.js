@@ -20,7 +20,7 @@ module.exports = {
             return message.channel.send(`**${message.author.username}**, You do not have enough permission to use this command`)
         }
         var person = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
-        if (!person) return message.reply("I couldn't find that person " + person)
+        if (!person) return message.reply("I couldn't find " + person)
 
         let role = message.guild.roles.cache.find(role => role.name === "Muted");
 
@@ -36,12 +36,12 @@ module.exports = {
         person.roles.add(role.id);
 
 
-        message.channel.send(`${person.user.tag} has now been muted for ${ms(ms(time))}`)
+        message.channel.send(`${person.user.tag} has been muted for ${ms(ms(time))}`)
 
         setTimeout(function () {
 
             person.roles.remove(role.id);
-            message.channel.send(`${person.user.tag} has been muted.`)
+            message.channel.send(`${person.user.tag} has been unmuted.`)
         }, ms(time));
     }
 }

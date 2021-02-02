@@ -4,7 +4,7 @@ const moment = require('moment')
 module.exports = {
     name: "userinfo",
     category: "fun",
-    description: "Returns latency and API ping",
+    description: "Shows you all of the information about a specified user",
     run: async (client, message, args) => {
 
         let user = message.mentions.users.first() || message.author;

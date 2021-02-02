@@ -13,8 +13,8 @@ module.exports = {
             let responses = [
                 "Yes",
                 "No",
-                "Definetly",
-                "Absoloutely",
+                "Definitely",
+                "Absolutely",
                 "Indeed",
                 "Not in a million years",
             ];
@@ -26,5 +26,5 @@ module.exports = {
                 .setColor(`RANDOM`);
             message.channel.send(Embed);
         }
-    },
+    }
 };

@@ -22,7 +22,7 @@ module.exports = {
                 .setColor("RANDOM")
                 .setTitle('Channel Name: ' + message.channel.name)
                 .setDescription('Channel Topic: ' + topic)
-                .addField('Channel NSFW Type', nsfw, true)
+                .addField('NSFW Channel', nsfw, true)
                 .addField("Channel Category", parent, true)
                 .addField('Channel Position', message.channel.position, true)
                 .addField("Channel Created At", `${message.channel.createdAt.toDateString()}`, true)

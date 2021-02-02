@@ -14,7 +14,7 @@ module.exports = {
 
         let messageArray = message.content.split(" ");
         const amount = parseInt(args[0]) + 1;
-
+        if(!args[0]) return message.channel.send("Please enter a valid number of messages to clear!")
         if (isNaN(amount)) {
             return message.channel.send(`${message.author.username}, you can only clear messages 1 to 99 messages!`)
         } else if (amount <= 1 || amount > 100) {

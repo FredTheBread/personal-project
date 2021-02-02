@@ -11,23 +11,15 @@ module.exports = {
   run: async (client, message, args) => {
     const user = message.mentions.users.first() || message.author;
     if (!message.guild.me.hasPermission("SEND_MESSAGES")) {
-      message.channel
-        .send(
-          `I Don't Have Permissions To Properly Execute Current Command! Permissions Require : [Send Messages , SEND_MESSAGES]`
-        )
-      message.author.send(
-        `I Don't Have Permissions To Properly Execute Current Command! Permissions Require : [Send Messages , SEND_MESSAGES]`
-      );
+      message.channel.send(`I don't have permissions to execute that command! Permissions Required: [Send_Messages]`)
+      message.author.send(`I don't have permissions to execute that command! Permissions Required: [Send_Messages]`);
     }
 
     if (!message.guild.me.hasPermission("ADMINISTRATOR")) {
-      message.channel
-        .send(
-          `I Don't Have Permissions To Properly Execute Current Command! Permissions Require : [Administrator , ADMINISTRATOR]`
-        )
-      message.author.send(
-        `I Don't Have Permissions To Properly Execute Current Command! Permissions Require : [Administrator , ADMINISTRATOR]`
-      );
+      message.channel.send(`I don't have permissions to execute that command! Permissions Required: [Administrator]`)
+    }
+    if (!message.author.hasPermission("ADMINISTRATOR")) {
+      message.channel.send(`You don't have permission to do that! Permissions Required: [Administrator]`)
     }
     if (user.bot) {
       return message.channel.send("You can't dm Bots!")

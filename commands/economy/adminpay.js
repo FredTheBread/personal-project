@@ -19,7 +19,7 @@ module.exports = {
     run: async (client, message, args) => {
         if (message.author.id != "673485740679757835") return message.reply("you cannot use this command!");
         let user = message.mentions.users.first() || client.users.cache.get(args[0]);
-        if (!user) return message.reply("Sorry, I can't find that user bruh.");
+        if (!user) return message.reply("you need to specify who you want to pay!");
         if (args[1] != Math.floor(args[1])) return message.reply("please enter only whole numbers!");
 
         Data.findOne({
@@ -41,7 +41,7 @@ module.exports = {
                 userData.money += parseInt(args[1]);
                 userData.save().catch(err => console.log(err));
             }
-            return message.channel.send(`${message.author.username} **admin** paid $${args[1]} to ${user.username}. Their balance is $${userData.money}.`)
+            return message.channel.send(`${message.author.username}'s godly wrath gave ${user.username} $${args[1]}`)
         })
     }
 }

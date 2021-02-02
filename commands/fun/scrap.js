@@ -6,7 +6,7 @@ module.exports = {
     name: "scrap",
     description: "Scrap any anime direct link from gogoanime",
     category: "info",
-    usage: "scrap <anime_name> | <episode_no>",
+    usage: "scrap <anime_name> <episode_no>",
     run: async (client, message, args) => {
 
         const cmd = args.join(" ").split(' Episode ')

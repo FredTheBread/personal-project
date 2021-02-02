@@ -5,7 +5,7 @@ const {
   MessageEmbed
 } = require("discord.js")
 module.exports = {
-  name: 'cov',
+  name: 'covid',
   aliases: ['corona'],
   category: 'info',
   description: 'Get current statics of corona of your country/continent/world',
@@ -48,7 +48,8 @@ module.exports = {
             .setFooter('CPM: cases per million  DPM: deaths per million  TPM: tests per million')
           if (args[0] !== 'all') embed.addField('Name of country', body.country, true)
           if (args[0] !== 'all') embed.setThumbnail(body.countryInfo.flag)
-          msg.edit(embed)
+          msg.delete()
+          message.channel.send(embed)
 
         })
         .catch(body => {

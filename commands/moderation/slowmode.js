@@ -31,6 +31,6 @@ module.exports = {
           else if (toSecond < 1) return message.channel.send("Timer should be more than or equal to 1 second.");
           
           await channel.setRateLimitPerUser(toSecond);
-          return message.channel.send(`<#${channel.id}> now has a **${ms(ms(time), {long: true})} slowmode**.`);
+          return message.channel.send(`<#${channel.id}> now has a **${ms(ms(time), {long: true})} slowmode**. To turn it off use -off after the command`);
     }
 }

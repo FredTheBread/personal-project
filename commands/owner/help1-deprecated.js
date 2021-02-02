@@ -5,7 +5,7 @@ const {
 
 
 module.exports = {
-    name: 'help',
+    name: 'help1-deprecated',
     category: "info",
     description: "Get commands help",
     run: async (client, message, args) => {

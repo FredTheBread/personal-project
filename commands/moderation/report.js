@@ -5,8 +5,6 @@ module.exports = {
   description: "Report a user of your choice!",
   usage: "<User mention>",
   run: async (bot, message, args) => {
-    if (!message.member.permissions.has("MANAGE_MESSAGES"))
-      return message.channel.send(`No.`);
     let User = message.mentions.users.first() || null;
 
     if (User == null) {
@@ -24,18 +22,18 @@ module.exports = {
       );
       if (!Channel)
         return message.channel.send(
-          `There is no channel in this guild which is called \`reports\``
+          `There is no channel in this guild called \`reports\``
         );
       let Embed = new MessageEmbed()
         .setTitle(`New report!`)
         .setDescription(
-          `The moderator \`${message.author.tag}\` has reported the user \`${User.tag}\`! `
+          `${message.author.tag}\` has reported the user \`${User.tag}\`! `
         )
         .setColor(`RED`)
         .setThumbnail(Avatar)
         .addFields(
-          { name: "Mod ID", value: `${message.author.id}`, inline: true },
-          { name: "Mod Tag", value: `${message.author.tag}`, inline: true },
+          { name: "Reporter ID", value: `${message.author.id}`, inline: true },
+          { name: "Reporter Tag", value: `${message.author.tag}`, inline: true },
           { name: "Reported ID", value: `${User.id}`, inline: true },
           { name: "Reported Tag", value: `${User.tag}`, inline: true },
           { name: "Reason", value: `\`${Reason.slice(1)}\``, inline: true },

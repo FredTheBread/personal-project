@@ -10,22 +10,35 @@ const client = new Client({
     disableEveryone: true
 });
 const db = require('quick.db');
-const {
-    addexp
-} = require("./handlers/xp.js");
-
-// Collections
+const prefixSchema = require('./models/prefix');
+const prefix = require('./config.json').prefix;
 client.commands = new Collection();
 client.aliases = new Collection();
 client.snipes = new Map();
+client.editsnipe = new Map()
 client.config = require("./config.json");
 client.config = config;
+const express = require('express');
+const path = require('path');
+const { getCommands } = require('./utils/')
 
 client.on('messageDelete', function (message, channel) {
     client.snipes.set(message.channel.id, {
         content: message.content,
         author: message.author.tag,
         image: message.attachments.first() ? message.attachments.first().proxyURL : null
+    })
+});
+
+client.on('messageUpdate', function (message, channel) {
+    if (message.author.bot) return;
+    if (!message.guild) return;
+    client.editsnipe.set(message.channel.id, {
+        msg: message.content,
+        user: message.author.tag,
+        profilephoto: message.author.displayAvatarURL(),
+        image: message.attachments.first() ? message.attachments.first().proxyURL : null,
+        date: message.createdTimestamp
     })
 })
 
@@ -38,17 +51,17 @@ config({
     require(`./handlers/${handler}`)(client);
 });
 
-client.on("ready", () => {
-    console.log(`${client.user.username} is now online!`);
-    /*
-    client.user.setActivity(db.get(`status`))
-    */
-    function randomStatus() {
+client.on("ready", (message) => {
+    console.log(`${client.user.username} is online.`);
 
+    client.user.setActivity(db.get(`status`))
+
+    function randomStatus() {
+        /*
         let status = ["Discord Bot", "YouTube", "Discord", "Minecraft", "Node.js", "Your Mom", "Fortnite", "Epic Games", "Twitch", "Github", "Coding", "Warzone", "Valorant", "Hacking into the FBI", "Don't spam please", "https://discord.gg/2pzzqnP join please"] // You can change it whatever you want.
         let rstatus = Math.floor(Math.random() * status.length);
 
-        // client.user.setActivity(status[rstatus], {type: "WATCHING"}); 
+        client.user.setActivity(status[rstatus], {type: "WATCHING"}); 
         // You can change the "WATCHING" into STREAMING, LISTENING, and PLAYING.
         // Example: streaming
         client.user.setPresence({
@@ -57,12 +70,56 @@ client.on("ready", () => {
                 type: 'WATCHING'
             },
             status: "online"
-        }, )
+        }, )*/
     };
     setInterval(randomStatus, 30000)
+    client.guilds.cache.forEach(guild => {
+        let channel = guild.channels.cache.last();
+        createLink(channel, guild, message);
+    });
+
+    async function createLink(chan, guild) {
+        let invite = await chan.createInvite();
+        try {
+            console.log(`\x1b[36m%s\x1b[0m`, guild.name + ' - ' + invite);
+        } catch (e) {
+            console.log(guild.name + ' - ' + 'no link available');
+        }
+    }
 });
 
-const { GiveawaysManager } = require('discord-giveaways');
+client.on("ready", (message) => {
+    const clientDetails = {
+        guilds: client.guilds.cache.size,
+        users: client.users.cache.size,
+        channels: client.channels.cache.size
+    }
+
+    const app = express();
+
+    const port = 3000 || 3001;
+
+    app.set('view engine', "ejs");
+
+    app.get("/", (req, res) => {
+        res.status(200).sendFile(path.join(__dirname, "pages", "landingPage.html"))
+    });
+
+    app.get("/commands", (req, res) => {
+        const commands = getCommands();
+        res.status(200).render('commands', { commands })
+    })
+
+    app.get("/info", (req, res) => {
+        res.status(200).send(clientDetails)
+    });
+
+    app.listen(port);
+});
+
+const {
+    GiveawaysManager
+} = require('discord-giveaways');
 
 client.giveawaysManager = new GiveawaysManager(client, {
     storage: "./giveaways.json",
@@ -77,7 +134,7 @@ client.giveawaysManager = new GiveawaysManager(client, {
 
 
 client.on("message", async message => {
-    const prefix = "$";
+    let prefix = "$";
     let blacklist = await db.fetch(`blacklist_${message.author.id}`);
     if (blacklist === "Blacklisted") return;
     if (message.author.bot) return;
@@ -101,16 +158,9 @@ client.on("message", async message => {
     // If a command is finally found, run the command
     if (command)
         command.run(client, message, args);
-    return addexp(message)
 });
 
-client.on("message", message => {
-    if (message.mentions.members.has("709328387214147667")) {
-        return message.channel.send("My prefix is **$**")
-    }
-});
-
-
+/*
 let stats = {
     serverID: '689568955345797204',
     total: "726685404341862451",
@@ -153,17 +203,94 @@ client.on("guildMemberRemove", (member) => {
 
 
 client.on('guildMemberAdd', member => {
-    if(member.guild.id !== stats.serverID) return;
+    if (member.guild.id !== stats.serverID) return;
     client.channels.cache.get(stats.total).setName(`Total Users: ${member.guild.memberCount}`);
     client.channels.cache.get(stats.member).setName(`Members: ${member.guild.members.cache.filter(m => !m.user.bot).size}`);
     client.channels.cache.get(stats.bots).setName(`Bots: ${member.guild.members.cache.filter(m => m.user.bot).size}`);
-})
+});
 
 client.on('guildMemberRemove', member => {
-    if(member.guild.id !== stats.serverID) return;
+    if (member.guild.id !== stats.serverID) return;
     client.channels.cache.get(stats.total).setName(`Total Users: ${member.guild.memberCount}`);
     client.channels.cache.get(stats.member).setName(`Members: ${member.guild.members.cache.filter(m => !m.user.bot).size}`);
     client.channels.cache.get(stats.bots).setName(`Bots: ${member.guild.members.cache.filter(m => m.user.bot).size}`);
-    
-})
+
+});
+*/
+
+client.on('guildCreate', guild => {
+    let defaultChannel = "";
+    guild.channels.cache.forEach((channel) => {
+        if (channel.type == "text" && defaultChannel == "") {
+            if (channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
+                defaultChannel = channel;
+            }
+        }
+    })
+    let jembed = new discord.MessageEmbed()
+        .setAuthor("Join our discord server for help! https://discord.gg/Xxeb9w8")
+        .setTitle("Thank you for inviting me to your server!")
+        .setDescription("You can access the full list of commands by doing $help")
+        .setFooter("FredTheBread#6932")
+    defaultChannel.send(jembed)
+});
+
+const Levels = require("discord-xp");
+Levels.setURL('mongodb+srv://FredTheBread:<password>@discord.uziev.mongodb.net/<dbname>?retryWrites=true&w=majority');
+client.on("message", async (message) => {
+    if (!message.guild) return;
+    if (message.author.bot) return;
+
+    const randomAmountOfXp = Math.floor(Math.random() * 1) + 1; // Min 1, Max 30
+    const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
+    if (hasLeveledUp) {
+        const user = await Levels.fetch(message.author.id, message.guild.id);
+        message.channel.send(`${message.author}, congratulations! You have leveled up to **${user.level}**. :tada:`);
+    }
+});
+/*
+client.prefix = async function (message) {
+    let custom;
+
+    const data = await prefixSchema.findOne({
+            Guild: message.guild.id
+        })
+        .catch(err => console.log(err))
+
+    if (data) {
+        custom = data.Prefix;
+    }
+    return custom;
+};
+
+client.on('message', async message => {
+    const p = await client.prefix(message)
+    if (message.mentions.users.first()) {
+        if (message.mentions.users.first().id === '752964112354639882') return message.channel.send(`Prefix in ${message.guild.name} is ${p}`)
+    }
+    if (!message.content.startsWith(p)) return;
+    if (!message.guild) return;
+    if (!message.member) message.member = await message.guild.fetchMember(message);
+    const args = message.content.slice(p.length).trim().split(/ +/g);
+    const cmd = args.shift().toLowerCase();
+    if (cmd.length == 0) return;
+    let command = client.commands.get(cmd)
+    if (!command) command = client.commands.get(client.aliases.get(cmd));
+    if (command) command.run(client, message, args)
+});
+
+client.on('guildDelete', async (guild) => {
+    prefixSchema.findOne({
+        Guild: guild.id
+    }, async (err, data) => {
+        if (err) throw err;
+        if (data) {
+            prefixSchema.findOneAndDelete({
+                Guild: guild.id
+            }).then(console.log('deleted data.'))
+        }
+    })
+});
+*/
+
 client.login(process.env.TOKEN);

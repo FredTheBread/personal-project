@@ -6,7 +6,7 @@ module.exports = {
     run: async (bot, message, args) => {
         if (!message.member.permissions.has("ADMINISTRATOR"))
             return message.channel.send(
-                `You do not have admin, ${message.author.username}`
+                `You do not have admin permissions, ${message.author.username}!`
             );
         const channel =
             message.mentions.channels.first() ||
@@ -18,7 +18,8 @@ module.exports = {
         }
         let question = message.content
             .split(`$poll ${channel} `)
-            .join(" ");
+            .join(" ")
+            .slice(5)
         if (!question)
             return message.channel.send(`You did not specify your question!`);
         const Embed = new Discord.MessageEmbed()
@@ -29,5 +30,5 @@ module.exports = {
         let msg = await bot.channels.cache.get(channel.id).send(Embed);
         await msg.react("👍");
         await msg.react("👎");
-    },
+    }
 };

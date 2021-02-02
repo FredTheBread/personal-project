@@ -10,9 +10,9 @@ mongoose.connect(botconfig.mongoPass, {
 const Data = require("../../models/data.js");
 
 module.exports = {
-    name: "leaderboard",
+    name: "economytop",
     category: "economy",
-    aliases: ["lb", "top"],
+    aliases: ["economylb", "top"],
     description: "Shows you the richest people",
     run: async (client, message, args) => {
         Data.find({

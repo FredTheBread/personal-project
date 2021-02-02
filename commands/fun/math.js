@@ -4,7 +4,7 @@ const Discord = require('discord.js')
 module.exports = {
     name: "math",
     category: "fun",
-    description: "Returns latency and API ping",
+    description: "Does your math homework for you",
     run: async (client, message, args) => {
 
         if (!args[0]) return message.channel.send('Please provide a question');

@@ -26,7 +26,7 @@ module.exports = {
         }
         let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
         if(warnings === 3) {
-            return message.channel.send(`${message.mentions.user.first().username} already reached the highest amount of warnings! \nThe user will be muted.`)
+            return message.channel.send(`${message.mentions.user.first().username} has reached the highest amount of warnings!`)
         }
         if(warnings === null) {
             db.set(`warnings_${message.guild.id}_${user.id}`, 1)

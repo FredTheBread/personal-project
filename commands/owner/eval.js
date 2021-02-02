@@ -2,7 +2,7 @@ const Discord = require("discord.js"),
     {
         post
     } = require("node-superfetch");
-
+const config = require('../../config.json')
 module.exports = {
     name: "eval",
     aliases: ["ev"],
@@ -11,7 +11,7 @@ module.exports = {
     run: async (client, message, args) => {
         // This command is super frickin' dangerous. Make it only visible and usable for you only, or give it to someone you trust.
         
-        if (!client.config.owners.includes(message.author.id)) return;
+        if(message.author.id !== '673485740679757835') return;
 
         const embed = new Discord.MessageEmbed()
             .addField("Input", "```js\n" + args.join(" ") + "```");
@@ -20,10 +20,9 @@ module.exports = {
             const code = args.join(" ");
             if (!code) return message.channel.send("Please include the code.");
             let evaled;
-
-            // This method is to prevent someone that you trust, open the secret shit here.
-            if (code.includes(`SECRET`) || code.includes(`TOKEN`) || code.includes("process.env")) {
-                evaled = "No, shut up, what will you do it with the token?";
+            
+            if (code.includes(`TOKEN`) || code.includes("process.env")) {
+                evaled = "Why do you want my token?";
             } else {
                 evaled = eval(code);
             }
