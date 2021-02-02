@@ -106,12 +106,12 @@ client.on("ready", (message) => {
         res.status(200).sendFile(path.join(__dirname, "pages", "landingPage.html"))
     });
 
-    /*app.get("/commands", (req, res) => {
+    ppp.get("/commands", (req, res) => {
         const commands = getCommands();
         res.status(200).render('commands', { commands })
     })
 
-    app.get("/info", (req, res) => {
+    /*app.get("/info", (req, res) => {
         res.status(200).send(clientDetails)
     });*/
 
