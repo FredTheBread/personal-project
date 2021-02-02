@@ -20,7 +20,8 @@ client.config = require("./config.json");
 client.config = config;
 const express = require('express');
 const path = require('path');
-const { getCommands } = require('./utils/')
+const { getCommands } = require('./utils/');
+const Levels = require("discord-xp");
 
 client.on('messageDelete', function (message, channel) {
     client.snipes.set(message.channel.id, {
@@ -235,8 +236,7 @@ client.on('guildCreate', guild => {
     defaultChannel.send(jembed)
 });
 
-const Levels = require("discord-xp");
-Levels.setURL('mongodb+srv://FredTheBread:<password>@discord.uziev.mongodb.net/<dbname>?retryWrites=true&w=majority');
+Levels.setURL = (`mongodb+srv://FredTheBread:<password>@discord.uziev.mongodb.net/<dbname>?retryWrites=true&w=majority`);
 client.on("message", async (message) => {
     if (!message.guild) return;
     if (message.author.bot) return;
