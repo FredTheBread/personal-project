@@ -6,8 +6,8 @@ module.exports = {
     run: async (client, message, args) => {
         try {
             if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply("You not have permission")
-            if (!args[1]) return message.reply('Please specify a channel type! (text, voice, category)')
-            if (!args[0]) return message.reply('Please specify a channel name!')
+            if (!args[0]) return message.reply('Please specify a channel type! (text, voice, category)')
+            if (!args[1]) return message.reply('Please specify a channel name!')
     
             message.channel.send('I\'ve created the channel!').then(() => {
                 message.guild.channels.create(args[1], {

@@ -90,12 +90,6 @@ client.on("ready", (message) => {
 });
 
 client.on("ready", (message) => {
-    const clientDetails = {
-        guilds: client.guilds.cache.size,
-        users: client.users.cache.size,
-        channels: client.channels.cache.size
-    }
-
     const app = express();
 
     const port = process.env.PORT || 3000;
@@ -103,16 +97,14 @@ client.on("ready", (message) => {
     app.set('view engine', "ejs");
 
     app.get("/", (req, res) => {
-        res.status(200).sendFile(path.join(__dirname, "pages", "landingPage.html"))
+        res.status(200).sendFile(
+            path.join(__dirname, "pages", "landingPage.html")
+        )
     });
 
     app.get("/commands", (req, res) => {
         const commands = getCommands();
         res.status(200).render('commands', { commands })
-    })
-
-    app.get("/info", (req, res) => {
-        res.status(200).send(clientDetails)
     });
 
     app.listen(process.env.PORT || 3000, function() {
