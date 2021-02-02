@@ -98,7 +98,7 @@ client.on("ready", (message) => {
 
     const app = express();
 
-    const port = 3000;
+    const port = process.env.PORT || 3000;
 
     app.set('view engine', "ejs");
 
@@ -115,7 +115,9 @@ client.on("ready", (message) => {
         res.status(200).send(clientDetails)
     });
 
-    app.listen(port);
+    app.listen(process.env.PORT || 3000, function() {
+        console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+    });
 });
 
 const {
