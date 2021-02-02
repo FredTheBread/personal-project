@@ -102,7 +102,7 @@ client.on("ready", (message) => {
 
     app.set('view engine', "ejs");
 
-    app.get("/", (req, res) => {
+    app.get("", (req, res) => {
         res.status(200).sendFile(path.join(__dirname, "pages", "landingPage.html"))
     });
 
