@@ -11,6 +11,8 @@ module.exports = {
 
         let userinfo = {};
 
+        const roles = user.roles;
+
         userinfo.avatar = user.displayAvatarURL()
         userinfo.name = user.username;
         userinfo.discrim = `#${user.discriminator}`;
@@ -22,12 +24,14 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setAuthor(user.tag, userinfo.avatar)
             .setThumbnail(userinfo.avatar)
-            .addField(`Username`, userinfo.name, true)
-            .addField(`Discriminator`, userinfo.discrim, true)
-            .addField(`ID`, userinfo.id, true)
-            .addField(`Status`, userinfo.status, true)
-            .addField(`Registered`, userinfo.registered, true)
-            .addField(`Joined`, userinfo.joined, true)
+            .addField('Username: ', userinfo.name, true)
+            .addField('Discriminator: ', userinfo.discrim, true)
+            .addField('ID: ', userinfo.id, true)
+            .addField('Status: ', userinfo.status, true)
+            .addField("Registered: ", userinfo.registered, true)
+            .addField('Joined: ', userinfo.joined, true)
+            .addField('Roles: ', roles, true)
+            .addField('Badges: ' , `${flags.join(', ')}`, true)
         message.channel.send(embed)
     }
 }
