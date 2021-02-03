@@ -11,7 +11,11 @@ module.exports = {
 
         let userinfo = {};
 
-        const roles = user.roles;
+        let rolemap = message.guild.roles.cache
+            .sort((a, b) => b.position - a.position)
+            .filter((role) => role.name !== "muted" && role.name !== "@everyone")
+            .map(r => r)
+            .join(" ");
 
         userinfo.avatar = user.displayAvatarURL()
         userinfo.name = user.username;
@@ -30,8 +34,8 @@ module.exports = {
             .addField('Status: ', userinfo.status, true)
             .addField("Registered: ", userinfo.registered, true)
             .addField('Joined: ', userinfo.joined, true)
-            .addField('Roles: ', roles, true)
-            .addField('Badges: ' , `${flags.join(', ')}`, true)
+            .addField('Roles: ', rolemap, true)
+            .addField('Badges: ', `${flags.join(', ')}`, true)
         message.channel.send(embed)
     }
 }
