@@ -11,8 +11,9 @@ mongoose.connect(botconfig.mongoPass, {
 const Data = require("../../models/data");
 
 module.exports = {
-    name: "clearall",
+    name: "adminremove",
     category: "economy",
+    aliases: ["clearall"],
     description: "Clears everybody's money",
     run: async (client, message, args) => {
 
