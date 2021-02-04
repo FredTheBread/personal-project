@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
+
 <nav>
     <div class="theme-switch-wrapper">
         <label class="theme-switch" for="checkbox">
@@ -17,10 +18,43 @@
         <em>Enable Dark Mode!</em>
     </div>
     <style>
+        :root {
+            --primary-color: #302AE6;
+            --secondary-color: #536390;
+            --font-color: #424242;
+            --bg-color: #fff;
+            --heading-color: #292922;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #9A97F3;
+            --secondary-color: #818cab;
+            --font-color: #e1e1ff;
+            --bg-color: #161625;
+            --heading-color: #818cab;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--font-color);
+        }
+
+        h1 {
+            color: var(--secondary-color);
+
+        }
+
+        a {
+            color: var(--primary-color);
+
+        }
+
+
         .theme-switch-wrapper {
             display: flex;
             align-items: center;
         }
+
         em {
             margin-left: 10px;
             font-size: 1rem;
