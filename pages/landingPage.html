@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body></body>
+<body> 
+    <button onclick="myFunction()">Switch mode</button>
+
+    <script>
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark");
+        }
+    </script>
+</body>
 
 <head>
     <title>Management Bot</title>
@@ -130,6 +139,14 @@
                 onclick="location.href = 'https://discord.com/api/oauth2/authorize?client_id=752964112354639882&permissions=1543629911&scope=bot'">Invite</button>
             <button class="btn" onclick="location.href = 'https://discord.gg/dVnW5H3QXn'">Support</button>
         </div>
+        <button onclick="myFunction()">Switch mode</button>
+
+        <script>
+            function myFunction() {
+                var element = document.body;
+                element.classList.toggle("dark");
+            }
+        </script>
     </body>
 </div>
 
@@ -163,7 +180,7 @@
         }
     </style>
 </head>
-<!--
+
 <style>
     .btn {
         background-color: white;
@@ -242,5 +259,5 @@
         border-color: #4caf50;
     }
 </style>
--->
+
 </html>
