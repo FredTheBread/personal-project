@@ -27,14 +27,15 @@ module.exports = {
         if (target.id === message.author.id) {
             return message.channel.send(`**${message.author.username}**, You can\'t kick yourself`)
         }
-        if (!args[1]) {
-            return message.channel.send(`**${message.author.username}**, Please specify a reason to kick`)
+        let reason = args.slice(1).join(" ");
+        if (!reason) {
+            reason = "No reason provided.";
         }
         let embed = new discord.MessageEmbed()
         .setTitle("Action: Kick")
         .setDescription(`Kicked ${target} (${target.id})`)
         .setColor("#ff2050")
-        .setFooter(`Kicked by ${message.author.username} for '` + args[1] + `'`);
+        .setFooter(`Kicked by ${message.author.username} for '` + reason + `'`);
         
         message.channel.send(embed)
         

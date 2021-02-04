@@ -28,7 +28,9 @@ module.exports = {
             json: true
         }
         if(!args[0]) {
-            return message.channel.send('**Please specify a pokemon!**')
+            return message.channel.send('**Please specify a pokemon!**').then(msg => {
+
+            }
         }
     }
 }
