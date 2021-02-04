@@ -14,7 +14,7 @@ module.exports = {
             response = await axios.get(url);
             data = response.data;
         } catch (e) {
-            return message.channel.send(`An error occured, please try again!`)
+            return message.channel.send(`The Api is currently down, please try again later!`)
         }
         message.channel.send("Translating into Binary...").then(async msg => {
         const embed = new MessageEmbed()

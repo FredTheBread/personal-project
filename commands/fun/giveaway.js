@@ -3,16 +3,17 @@ const ms = require('ms');
 module.exports = {
     name: "giveaway",
     description: "Starts a giveaway",
+    usage: "$giveaway <channel> <duration> <# of winners> <prize>",
     run: async (client, message, args) => {
         if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send('You are not allowed to start giveaways');
 
         let channel = message.mentions.channels.first();
 
-        if (!channel) return message.channel.send('Please provide a channel');
+        if (!channel) return message.channel.send('Please provide a channel!');
 
         let giveawayDuration = args[1];
 
-        if (!giveawayDuration || isNaN(ms(giveawayDuration))) return message.channel.send('Pleae provide a valid duration');
+        if (!giveawayDuration || isNaN(ms(giveawayDuration))) return message.channel.send('Pleae provide a valid duration!');
 
         let giveawayWinners = args[2];
 
