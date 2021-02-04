@@ -20,6 +20,10 @@ module.exports = {
             return message.channel.send(`**${message.author.username}**, Please mention the person who you want to kick`)
         }
 
+        if(!target.kickable) {
+            return message.channel.send("This user is not kickable!")
+        }
+
         if (target.id === message.author.id) {
             return message.channel.send(`**${message.author.username}**, You can\'t kick yourself`)
         }
