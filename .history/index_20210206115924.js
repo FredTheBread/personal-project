@@ -10,6 +10,7 @@ const client = new Client({
     disableEveryone: true
 });
 const db = require('quick.db');
+const prefixSchema = require('./models/prefix');
 const prefix = require('./config.json').prefix;
 client.commands = new Collection();
 client.aliases = new Collection();

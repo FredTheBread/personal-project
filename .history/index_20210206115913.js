@@ -10,6 +10,7 @@ const client = new Client({
     disableEveryone: true
 });
 const db = require('quick.db');
+const prefixSchema = require('./models/prefix');
 const prefix = require('./config.json').prefix;
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -145,7 +146,9 @@ client.on("message", async message => {
 
     if (!command) command = client.commands.get(client.aliases.get(cmd));
 
-    if (command) command.run(client, message, args);
+    // If a command is finally found, run the command
+    if (command)
+        command.run(client, message, args);
 });
 
 /*

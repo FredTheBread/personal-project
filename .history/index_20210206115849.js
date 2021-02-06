@@ -10,6 +10,7 @@ const client = new Client({
     disableEveryone: true
 });
 const db = require('quick.db');
+const prefixSchema = require('./models/prefix');
 const prefix = require('./config.json').prefix;
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -126,6 +127,7 @@ client.giveawaysManager = new GiveawaysManager(client, {
     }
 });
 
+/*
 client.on("message", async message => {
     let prefix = "$";
     let blacklist = await db.fetch(`blacklist_${message.author.id}`);
@@ -134,6 +136,8 @@ client.on("message", async message => {
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
 
+
+    // If message.member is uncached, cache it.
     if (!message.member) message.member = await message.guild.fetchMember(message);
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -141,12 +145,15 @@ client.on("message", async message => {
 
     if (cmd.length === 0) return;
 
+    // Get the command
     let command = client.commands.get(cmd);
-
+    // If none is found, try to find it by alias
     if (!command) command = client.commands.get(client.aliases.get(cmd));
 
-    if (command) command.run(client, message, args);
-});
+    // If a command is finally found, run the command
+    if (command)
+        command.run(client, message, args);
+});*/
 
 /*
 let stats = {
@@ -234,6 +241,49 @@ client.on("message", async (message) => {
         const user = await Levels.fetch(message.author.id, message.guild.id);
         message.channel.send(`${message.author}, congratulations! You have leveled up to **${user.level}**. :tada:`);
     }
+});
+
+client.prefix = async function (message) {
+    let custom;
+
+    const data = await prefixSchema.findOne({
+            Guild: message.guild.id
+        })
+        .catch(err => console.log(err))
+
+    if (data) {
+        custom = data.Prefix;
+    }
+    return custom;
+};
+
+client.on('message', async message => {
+    const p = await client.prefix(message)
+    if (message.mentions.users.first()) {
+        if (message.mentions.users.first().id === '752964112354639882') return message.channel.send(`Prefix in ${message.guild.name} is ${p}`)
+    }
+    if (!message.content.startsWith(p)) return;
+    if (!message.guild) return;
+    if (!message.member) message.member = await message.guild.fetchMember(message);
+    const args = message.content.slice(p.length).trim().split(/ +/g);
+    const cmd = args.shift().toLowerCase();
+    if (cmd.length == 0) return;
+    let command = client.commands.get(cmd)
+    if (!command) command = client.commands.get(client.aliases.get(cmd));
+    if (command) command.run(client, message, args)
+});
+
+client.on('guildDelete', async (guild) => {
+    prefixSchema.findOne({
+        Guild: guild.id
+    }, async (err, data) => {
+        if (err) throw err;
+        if (data) {
+            prefixSchema.findOneAndDelete({
+                Guild: guild.id
+            }).then(console.log('deleted data.'))
+        }
+    })
 });
 
 
