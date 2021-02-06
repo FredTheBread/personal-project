@@ -7,74 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
 
+<nav>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        <em>Enable Dark Mode!</em>
+    </div>
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One);
-
-        :root {
-            --primary-color: #302AE6;
-            --secondary-color: #536390;
-            --font-color: #424242;
-            --bg-color: #fff;
-            --heading-color: #292922;
-        }
-
-        [data-theme="dark"] {
-            --primary-color: #9A97F3;
-            --secondary-color: #818cab;
-            --font-color: #e1e1ff;
-            --bg-color: #161625;
-            --heading-color: #818cab;
-        }
-
-        body {
-            font-family: "Lato", sans-serif;
-            background-color: var(--bg-color);
-            color: var(--font-color);
-            max-width: 90%;
-            margin: 0 auto;
-            font-size: calc(1rem + 0.25vh);
-        }
-
-        h1 {
-            color: var(--heading-color);
-            font-family: "Sansita One", serif;
-            font-size: 2rem;
-            margin-bottom: 1vh;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6rem;
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            border-bottom: 3px solid transparent;
-            font-weight: bold;
-        }
-
-        section {
-            max-width: 68%;
-            margin: 0 auto;
-        }
-
-        .post-meta {
-            font-size: 1rem;
-            font-style: italic;
-            display: block;
-            margin-bottom: 4vh;
-            color: var(--secondary-color);
-        }
-
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            padding: 20px 0;
-        }
-
-        /*slider switch css */
         .theme-switch-wrapper {
             display: flex;
             align-items: center;
@@ -106,6 +49,9 @@
             top: 0;
             transition: .4s;
         }
+        input:checked + .slider { 
+            background-color: #222;
+        }
 
         .slider:before {
             background-color: #fff;
@@ -133,50 +79,28 @@
         .slider.round:before {
             border-radius: 50%;
         }
+
+        .dark {
+            background-color: #222;
+            color: #e6e6e6;
+        }
     </style>
-</head>
-
-<nav>
-    <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round"></div>
-        </label>
-        <em>Enable Dark Mode!</em>
-    </div>
+    <em onclick="myFunction()">Enable Dark Mode</em>
     <script>
-        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-        const currentTheme = localStorage.getItem('theme');
-
-        if (currentTheme) {
-            document.documentElement.setAttribute('data-theme', currentTheme);
-
-            if (currentTheme === 'dark') {
-                toggleSwitch.checked = true;
-            }
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark");
         }
-
-        function switchTheme(e) {
-            if (e.target.checked) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        toggleSwitch.addEventListener('change', switchTheme, false);
     </script>
 </nav>
 
 <div>
     <header>
         <h1>Management Bot</h1>
-        <img class="avatar" src="https://i.pinimg.com/originals/bd/78/c0/bd78c02df3dafc7ba171e8ae15ce94f8.png" alt="bot's avatar!">
+        <img class="avatar" src="https://discord.com/assets/dd4dbc0016779df1378e7812eabaa04d.png" alt="bot's avatar!">
         <h3>Discord's Most Powerful Moderation Bot!</h3>
         <p class="description">With over 100 commands, this bot can help you make your server even more exciting!
-            With categories ranging from animal and fun to economy and moderation, the possibilities are endless and all of
+            Categories ranging from animal and fun to economy and moderation, the possibilities are endless and all of
             the commands are always available.</p>
     </header>
 
@@ -255,7 +179,7 @@
 
     h3 {
         color: #7289da;
-        font-family: 'Futura';
+        font-family: 'Knewave';
         text-align: center;
         font-size: 150%;
     }

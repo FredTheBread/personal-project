@@ -18,7 +18,7 @@ module.exports = {
         }
         let target = message.mentions.members.first();
         if(!target.bannable) {
-            return message.channel.send("I cannot ban this user!")
+            return message.channel.send()
         }
         let reason = args.slice(1).join(" ")
         if (!target) {

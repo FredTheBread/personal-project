@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-
+</head>
+<<head>
     <style>
         @import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One);
 
@@ -81,9 +82,9 @@
         }
 
         em {
-            margin-left: 10px;
-            font-size: 1rem;
-        }
+                margin-left: 10px;
+                font-size: 1rem;
+            }
 
         .theme-switch {
             display: inline-block;
@@ -135,7 +136,6 @@
         }
     </style>
 </head>
-
 <nav>
     <div class="theme-switch-wrapper">
         <label class="theme-switch" for="checkbox">
@@ -169,26 +169,6 @@
         toggleSwitch.addEventListener('change', switchTheme, false);
     </script>
 </nav>
-
-<div>
-    <header>
-        <h1>Management Bot</h1>
-        <img class="avatar" src="https://i.pinimg.com/originals/bd/78/c0/bd78c02df3dafc7ba171e8ae15ce94f8.png" alt="bot's avatar!">
-        <h3>Discord's Most Powerful Moderation Bot!</h3>
-        <p class="description">With over 100 commands, this bot can help you make your server even more exciting!
-            With categories ranging from animal and fun to economy and moderation, the possibilities are endless and all of
-            the commands are always available.</p>
-    </header>
-
-    <body>
-        <div class="buttons">
-            <button class="btn" onclick="location.href = 'https://management-bot.tk/commands'">Commands</button>
-            <button class="btn"
-                onclick="location.href = 'https://discord.com/api/oauth2/authorize?client_id=752964112354639882&permissions=1543629911&scope=bot'">Invite</button>
-            <button class="btn" onclick="location.href = 'https://discord.gg/dVnW5H3QXn'">Support</button>
-        </div>
-    </body>
-</div>
 
 <style>
     .btn {
@@ -253,9 +233,13 @@
         color: #4caf50;
     }
 
+    body {
+        background-color: #000000;
+    }
+
     h3 {
         color: #7289da;
-        font-family: 'Futura';
+        font-family: 'Knewave';
         text-align: center;
         font-size: 150%;
     }

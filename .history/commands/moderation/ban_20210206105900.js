@@ -17,9 +17,7 @@ module.exports = {
             return message.channel.send(`**${message.author.username}**, I do not have enough permission to use this command`);
         }
         let target = message.mentions.members.first();
-        if(!target.bannable) {
-            return message.channel.send("I cannot ban this user!")
-        }
+        if(!target.bannable)
         let reason = args.slice(1).join(" ")
         if (!target) {
             return message.channel.send(`**${message.author.username}**, please mention the person who you want to ban`)
