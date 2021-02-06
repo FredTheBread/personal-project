@@ -37,5 +37,19 @@ module.exports = {
             .addField('Roles: ', rolemap, true)
             .addField('Badges: ', `${flags.join(', ')}`, true)
         message.channel.send(embed)
+        if(!flags) {
+            const embed = new Discord.MessageEmbed()
+            .setAuthor(user.tag, userinfo.avatar)
+            .setThumbnail(userinfo.avatar)
+            .addField('Username: ', userinfo.name, true)
+            .addField('Discriminator: ', userinfo.discrim, true)
+            .addField('ID: ', userinfo.id, true)
+            .addField('Status: ', userinfo.status, true)
+            .addField("Registered: ", userinfo.registered, true)
+            .addField('Joined: ', userinfo.joined, true)
+            .addField('Roles: ', rolemap, true)
+            .addField('Badges: ', `No Badges`, true)
+            message.channel.send(embed)
+        }
     }
 }
