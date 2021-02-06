@@ -21,13 +21,13 @@ module.exports = {
                 if (members[i - 1].id === member.id) ful(i);
             }
         });
-        if(position == 1) {
+        if(position == 0) {
             message.channel.send(`${member} is the 1st member to join the server!`)
-        } else if (position == 2) {
+        } else if (position == 1) {
             message.channel.send(`${member} is the 2nd member to join the server!`)
-        } else if (position == 3) {
+        } else if (position == 2) {
             message.channel.send(`${member} is the 3rd member to join the server!`)
-        } else if (position == 4) {
+        } else if (position == 3) {
             message.channel.send(`${member} is the 4th member to join the server!`)
         } else {
             message.channel.send(`${member} is the ${await position}th member to join the server!`);
