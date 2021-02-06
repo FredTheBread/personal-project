@@ -24,8 +24,8 @@ module.exports = {
         userinfo.status = user.presence.status;
         userinfo.registered = moment.utc(message.guild.members.cache.get(user.id).user.createdAt).format("dddd, MMMM do, YYYY");
         userinfo.joined = moment.utc(message.guild.members.cache.get.joinedAt).format("dddd, MMMM do, YYYY");
-
-        const embed = new Discord.MessageEmbed()
+        if(flaps) {
+            const embed = new Discord.MessageEmbed()
             .setAuthor(user.tag, userinfo.avatar)
             .setThumbnail(userinfo.avatar)
             .addField('Username: ', userinfo.name, true)
@@ -37,7 +37,7 @@ module.exports = {
             .addField('Roles: ', rolemap, true)
             .addField('Badges: ', `${flags.join(', ')}`, true)
         message.channel.send(embed)
-        if(!flags) {
+        } else if(!flags) {
             const embed = new Discord.MessageEmbed()
             .setAuthor(user.tag, userinfo.avatar)
             .setThumbnail(userinfo.avatar)
