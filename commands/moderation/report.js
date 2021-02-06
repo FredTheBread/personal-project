@@ -27,7 +27,7 @@ module.exports = {
       let Embed = new MessageEmbed()
         .setTitle(`New report!`)
         .setDescription(
-          `${message.author.tag}` + "has reported the user" + `${User.tag}!`
+          `${message.author.tag}` + " has reported the user " + `${User.tag}!`
         )
         .setColor(`RED`)
         .setThumbnail(Avatar)
@@ -38,8 +38,8 @@ module.exports = {
           { name: "Reported Tag", value: `${User.tag}`, inline: true },
           { name: "Reason", value: `\`${Reason.slice(2)}\``, inline: true },
           {
-            name: "Date (M/D/Y)",
-            value: `${new Intl.DateTimeFormat("en-US").format(Date.now())}`,
+            name: "Date (D/M/Y)",
+            value: `${new Intl.DateTimeFormat("de-AT").format(Date.now())}`,
             inline: true,
           }
         );

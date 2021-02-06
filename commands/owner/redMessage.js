@@ -3,7 +3,6 @@ module.exports = {
     category: "fun",
     description: "This is not a command, this is used for a different command to work",
     run: async (client, message, args) => {
-        message.channel.send('This is not a command, this is used for a different command to work.')
         const redMessage = (message, title, description = null) => {
             message.channel.send({
                 embed: {
