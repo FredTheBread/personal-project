@@ -7,11 +7,11 @@ module.exports = {
   run: async (bot, message, args) => {
     let User = message.mentions.users.first() || null;
 
-    if (User == null) {
+    if (!User) {
       return message.channel.send(`You did not mention a user!`);
     } else {
       let Reason = message.content.slice(22 + 7) || null;
-      if (Reason == null) {
+      if (!Reason) {
         return message.channel.send(
           `You did not specify a reason for the report!`
         );
@@ -36,7 +36,7 @@ module.exports = {
           { name: "Reporter Tag", value: `${message.author.tag}`, inline: true },
           { name: "Reported ID", value: `${User.id}`, inline: true },
           { name: "Reported Tag", value: `${User.tag}`, inline: true },
-          { name: "Reason", value: `\`${Reason.slice(1)}\``, inline: true },
+          { name: "Reason", value: `\`${Reason.slice(2)}\``, inline: true },
           {
             name: "Date (M/D/Y)",
             value: `${new Intl.DateTimeFormat("en-US").format(Date.now())}`,

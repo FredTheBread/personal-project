@@ -31,7 +31,6 @@ module.exports = {
             message.channel.send({
                 embed: hembed
             })
-            message.channel.send(':)')
             return;
         }
         const ghembed = new Discord.MessageEmbed()
