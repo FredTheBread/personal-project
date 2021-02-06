@@ -127,7 +127,7 @@ client.giveawaysManager = new GiveawaysManager(client, {
     }
 });
 
-/*
+
 client.on("message", async message => {
     let prefix = "$";
     let blacklist = await db.fetch(`blacklist_${message.author.id}`);
@@ -153,7 +153,7 @@ client.on("message", async message => {
     // If a command is finally found, run the command
     if (command)
         command.run(client, message, args);
-});*/
+});
 
 /*
 let stats = {
@@ -242,7 +242,7 @@ client.on("message", async (message) => {
         message.channel.send(`${message.author}, congratulations! You have leveled up to **${user.level}**. :tada:`);
     }
 });
-
+/*
 client.prefix = async function (message) {
     let custom;
 
@@ -285,6 +285,6 @@ client.on('guildDelete', async (guild) => {
         }
     })
 });
-
+*/
 
 client.login(process.env.TOKEN);

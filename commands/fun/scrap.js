@@ -13,7 +13,7 @@ module.exports = {
 
 
         if (!cmd[0]) {
-            return message.channel.send("Please speicfy an anime name")
+            return message.channel.send("Please specify an anime name")
         }
 
         if (!cmd[1]) {

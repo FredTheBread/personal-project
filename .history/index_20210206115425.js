@@ -242,7 +242,7 @@ client.on("message", async (message) => {
         message.channel.send(`${message.author}, congratulations! You have leveled up to **${user.level}**. :tada:`);
     }
 });
-
+/*
 client.prefix = async function (message) {
     let custom;
 
@@ -285,6 +285,6 @@ client.on('guildDelete', async (guild) => {
         }
     })
 });
-
+*/
 
 client.login(process.env.TOKEN);
