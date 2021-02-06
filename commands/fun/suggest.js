@@ -8,15 +8,11 @@ module.exports = {
     usage: "<message>",
     description: "suggest anything you wanted to",
     run: async (bot, message, args) => {
-        message.delete()
-        // reasoning definition
         let suggestion = args.join(" ");
         if (!suggestion)
             return message.channel.send(`Please provide a suggestion!`)
-        // grab reports channel
         let sChannel = message.guild.channels.cache.find(x => x.name === "suggestions");
         if (!sChannel) return message.channel.send("You don't have channel with the name `suggestions`")
-        // send to reports channel and add tick or cross
         message.channel.send("Your suggestion has been filled to the staff team. Thank you!")
         let suggestembed = new MessageEmbed()
             .setFooter(bot.user.username, bot.user.displayAvatarURL)

@@ -19,7 +19,7 @@ module.exports = {
         let question = message.content
             .split(`$poll ${channel} `)
             .join(" ")
-            .slice(5)
+            .slice(0)
         if (!question)
             return message.channel.send(`You did not specify your question!`);
         const Embed = new Discord.MessageEmbed()

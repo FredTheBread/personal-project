@@ -23,7 +23,7 @@ module.exports = {
         try {
             res = await fetch(url).then(url => url.json());
         } catch (e) {
-            return message.reply("I couldn't find that account... :(")
+            return message.reply("This API is currently not available")
                 .then(m => m.delete({ timeout: 5000}));
         }
 
