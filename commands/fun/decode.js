@@ -19,7 +19,7 @@ module.exports = {
         const embed = new MessageEmbed()
             .setTitle('Binary to text')
             .setDescription(data.text)
-
+        msg.delete()
         await message.channel.send(embed)
         })
     }
