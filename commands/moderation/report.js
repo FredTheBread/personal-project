@@ -44,6 +44,7 @@ module.exports = {
           }
         );
       Channel.send(Embed);
+      message.channel.send("Thank you, the user has been reported.")
     }
   },
 };
