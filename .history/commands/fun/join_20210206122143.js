@@ -30,7 +30,7 @@ module.exports = {
         } else if (position == 4) {
             message.channel.send(`${member} is the 4th member to join the server!`)
         } else {
-            message.channel.send(`${member} is the ${await position}th member to join the server!`);
+            message.channel.send(`${member} is the ${await position} member to join the server!`);
         }
     },
 };

@@ -22,15 +22,16 @@ module.exports = {
             }
         });
         if(position == 1) {
-            message.channel.send(`${member} is the 1st member to join the server!`)
+            message.channel.send(`${member} is the first member to join the server!`)
         } else if (position == 2) {
-            message.channel.send(`${member} is the 2nd member to join the server!`)
+            message.channel.send(`${member} is the second member to join the server!`)
         } else if (position == 3) {
-            message.channel.send(`${member} is the 3rd member to join the server!`)
+            message.channel.send(`${member} is the third member to join the server!`)
         } else if (position == 4) {
-            message.channel.send(`${member} is the 4th member to join the server!`)
-        } else {
-            message.channel.send(`${member} is the ${await position}th member to join the server!`);
+            message.channel.send(`${member} is the fourth member to join the server!`)
         }
+        message.channel.send(
+            `${member} is the ${await position} member to join the server!`
+        );
     },
 };
