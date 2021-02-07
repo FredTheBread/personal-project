@@ -16,7 +16,8 @@ module.exports = {
       }) return message.channel.send("I broke! Try again.")
 
     let dEmbed = new Discord.MessageEmbed()
-      .setColor(`CYAN`)
+      .setTitle(`Random Pug Image`)
+      .setColor(`#f3f3f3`)
       .setImage(body.message)
 
     message.channel.send(dEmbed)

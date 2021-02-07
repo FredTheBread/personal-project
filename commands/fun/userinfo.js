@@ -10,7 +10,6 @@ module.exports = {
         let user = message.mentions.users.first() || message.author;
 
         let userinfo = {};
-        const flags = user.flags.toArray();
         let rolemap = message.guild.roles.cache
             .sort((a, b) => b.position - a.position)
             .filter((role) => role.name !== "muted" && role.name !== "@everyone")
