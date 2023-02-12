@@ -16,61 +16,61 @@ All commands can be found here:
 | koala   | daily       | ascii        | clear         | leave       |
 | panda   | economytop  | avatar       | createchannel | status      |
 | pug     | gamble      | badges       | deletechannel | unblacklist |
-| .       | give        | bans         | help          |             |
-| .       | payall      | binary       | infinite-mute |             |
-| .       | .           | botinfo      | kick          |             |
-| .       | .           | chatbot      | mute          |             |
-| .       | .           | covid        | nuke          |             |
-| .       | .           | createinvite | permissions   |             |
-| .       | .           | decode       | removerole    |             |
-| .       | .           | editsnipe    | report        |             |
-| .       | .           | enlarge      | resetwarns    |             |
-| .       | .           | firstmessage | restart       |             |
-| .       | .           | giveaway     | slowmode      |             |
-| .       | .           | google       | transcript    |             |
-| .       | .           | hug          | unban         |             |
-| .       | .           | image        | unmute        |             |
-| .       | .           | imdb         | warn          |             |
-| .       | .           | info         | warnings      |             |
-| .       | .           | instagram    |               |             |
-| .       | .           | invite       |               |             |
-| .       | .           | position     |               |             |
-| .       | .           | jumble       |               |             |
-| .       | .           | kill         |               |             |
-| .       | .           | kiss         |               |             |
-| .       | .           | leaderboard  |               |             |
-| .       | .           | math         |               |             |
-| .       | .           | meme         |               |             |
-| .       | .           | minecraft    |               |             |
-| .       | .           | npm          |               |             |
-| .       | .           | pat          |               |             |
-| .       | .           | ping         |               |             |
-| .       | .           | play         |               |             |
-| .       | .           | poke         |               |             |
-| .       | .           | pokemon      |               |             |
-| .       | .           | poll         |               |             |
-| .       | .           | putin        |               |             |
-| .       | .           | rank         |               |             |
-| .       | .           | reroll       |               |             |
-| .       | .           | send         |               |             |
-| .       | .           | servericon   |               |             |
-| .       | .           | serverinfo   |               |             |
-| .       | .           | serverroles  |               |             |
-| .       | .           | setnickname  |               |             |
-| .       | .           | slap         |               |             |
-| .       | .           | snipe        |               |             |
-| .       | .           | suggest      |               |             |
-| .       | .           | support      |               |             |
-| .       | .           | ticket       |               |             |
-| .       | .           | tictactoe    |               |             |
-| .       | .           | time         |               |             |
-| .       | .           | translate    |               |             |
-| .       | .           | trigger      |               |             |
-| .       | .           | trivia       |               |             |
-| .       | .           | uptime       |               |             |
-| .       | .           | userinfo     |               |             |
-| .       | .           | weather      |               |             |
-| .       | .           | webhook      |               |             |
+|         | give        | bans         | help          |             |
+|         | payall      | binary       | infinite-mute |             |
+|         |             | botinfo      | kick          |             |
+|         |             | chatbot      | mute          |             |
+|        |             | covid        | nuke          |             |
+|        |             | createinvite | permissions   |             |
+|        |             | decode       | removerole    |             |
+|        |             | editsnipe    | report        |             |
+|        |             | enlarge      | resetwarns    |             |
+|        |             | firstmessage | restart       |             |
+|        |             | giveaway     | slowmode      |             |
+|        |             | google       | transcript    |             |
+|        |            | hug          | unban         |             |
+|        |            | image        | unmute        |             |
+|        |            | imdb         | warn          |             |
+|        |            | info         | warnings      |             |
+|        |            | instagram    |               |             |
+|        |            | invite       |               |             |
+|        |            | position     |               |             |
+|        |            | jumble       |               |             |
+|        |            | kill         |               |             |
+|        |            | kiss         |               |             |
+|        |            | leaderboard  |               |             |
+|        |            | math         |               |             |
+|        |            | meme         |               |             |
+|        |            | minecraft    |               |             |
+|        |            | npm          |               |             |
+|        |            | pat          |               |             |
+|        |            | ping         |               |             |
+|        |            | play         |               |             |
+|        |            | poke         |               |             |
+|        |            | pokemon      |               |             |
+|        |            | poll         |               |             |
+|        |            | putin        |               |             |
+|        |            | rank         |               |             |
+|        |            | reroll       |               |             |
+|        |            | send         |               |             |
+|        |            | servericon   |               |             |
+|        |            | serverinfo   |               |             |
+|        |            | serverroles  |               |             |
+|        |            | setnickname  |               |             |
+|        |            | slap         |               |             |
+|        |            | snipe        |               |             |
+|        |            | suggest      |               |             |
+|        |            | support      |               |             |
+|        |            | ticket       |               |             |
+|        |            | tictactoe    |               |             |
+|        |            | time         |               |             |
+|        |            | translate    |               |             |
+|        |            | trigger      |               |             |
+|        |            | trivia       |               |             |
+|        |            | uptime       |               |             |
+|        |            | userinfo     |               |             |
+|        |            | weather      |               |             |
+|        |            | webhook      |               |             |
 
 
 This project was in development for over 6 months and is available for anyone to use.
