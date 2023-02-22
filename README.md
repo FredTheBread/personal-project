@@ -2,7 +2,7 @@
 
 Custom JavaScript Discord Bot built on DiscordJS version 12. Has over 100 commands and was built for a school project.
 
-An accompanying website was also created for the bot: https://management-bot.tk/, but has since been shut down due to Heroku moving away from a free to use platform.
+An accompanying website was also created for the bot: https://management-bot.tk/, but has since been shut down due to Heroku moving away from a free to use platform and the Freenom subscription for the domain running out.
 
 The bot can be added using the following link: https://discordapp.com/oauth2/authorize?client_id=752964112354639882&scope=bot
 
