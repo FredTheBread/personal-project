@@ -1,6 +1,6 @@
-# personal-project
+# IB Final Personal Project Discord Bot
 
-Custom JavaScript Discord Bot built on DiscordJS version 12. Has over 100 commands and was built for a school project.
+Custom JavaScript Discord Bot built on DiscordJS version 12, written in JavaScript and using NodeJS. Has over 100 commands and was built for a school project.
 
 An accompanying website was also created for the bot: https://management-bot.tk/, but has since been shut down due to Heroku moving away from a free to use platform and the Freenom subscription for the domain running out.
 
