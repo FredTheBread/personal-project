@@ -1,6 +1,6 @@
 {
-    "owners": ["673485740679757835"],
-    "mongoPass": "mongodb+srv://FredTheBread:MichaelCole2005@themanagement-oxx2m.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "prefix": "$",
-    "YOUTUBE_API_KEY": "AIzaSyBg3V37-_wixzh4ZBscuduHkM8MBrmKfsY"
+    "owners": [""],
+    "mongoPass": "",
+    "prefix": "",
+    "YOUTUBE_API_KEY": ""
 }
