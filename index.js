@@ -224,7 +224,7 @@ client.on('guildCreate', guild => {
 });
 
 client.on("message", async (message) => {
-    Levels.setURL = (`mongodb+srv://FredTheBread:<password>@discord.uziev.mongodb.net/<dbname>?retryWrites=true&w=majority`);
+    Levels.setURL = (``);
     if (!message.guild) return;
     if (message.author.bot) return;
 
